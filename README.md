@@ -10,3 +10,5 @@ npm install
 ## Contributing
 
 ## License
+
+Apache
