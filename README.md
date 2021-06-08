@@ -11,4 +11,4 @@ npm install
 
 ## License
 
-Apache
+MIT
