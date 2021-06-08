@@ -14,3 +14,9 @@ Feel free to list issue and PR
 ## License
 
 MIT
+
+## To Do
+[] Crawl the website to get title,body,date,link
+[] Test it
+[] Begin Actual Development
+[] Deploy
