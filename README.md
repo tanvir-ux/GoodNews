@@ -9,6 +9,8 @@ npm install
 
 ## Contributing
 
+Feel free to list issue and PR
+
 ## License
 
 MIT
