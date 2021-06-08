@@ -3,6 +3,7 @@ Good News is an android app for filtering good news from a news site.
 
 ## Installation
 
+use this command bellow
 ```bash
 npm install 
 ```
@@ -16,7 +17,7 @@ Feel free to list issue and PR
 MIT
 
 ## To Do
- Crawl the website to get title,body,date,link
- Test it
- Begin Actual Development
- Deploy
+ Crawl the website to get title,body,date,link.
+ Test it.
+ Begin Actual Development.
+ Deploy.
