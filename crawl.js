@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
     try {
 
         const browser = await puppeteer.launch({
-            headless: false
+            headless: true
         });
         const page = await browser.newPage();
 
@@ -21,6 +21,8 @@ const puppeteer = require('puppeteer');
             // storiesSet.map((el) => ({
             //     title: el.innerText
             // }));
+
+            // stories.map(el => ({ title: el.childNodes[0].childNodes[0].querySelector('h2').innerText}))
 
 
 
