@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const fs = require('fs');
 
 (async function main() {
     try {
@@ -9,30 +10,56 @@ const puppeteer = require('puppeteer');
         const page = await browser.newPage();
 
         await page.goto('https://www.prothomalo.com/collection/latest');
+        await page.setViewport({
+            width: 1200,
+            height: 800
+        });
 
-        await page.waitForSelector('.card-image-wrapper');
-
-        const data = await page.evaluate(() =>
-
-            Array.from(document.querySelectorAll('.bn-story-card'))
-                .map((el) => ({
-                    name: el.querySelector('a > h2').textContent,
-                    link: el.querySelector('a').href,
-                    image_link: el.querySelector('div.card-image-wrapper img').src
-                }))
-        );
+        await page.waitForSelector('.bn-story-card');
 
         // const data = await page.evaluate(() =>
 
-        //     Array.from(page.$$('.bn-story-card'))
+        //     Array.from(document.querySelectorAll('.bn-story-card'))
         //         .map((el) => ({
-        //             name: el.$('a > h2').textContent,
-        //             link: el.$('a').href,
-        //             //image_link: el.$('div.card-image-wrapper img').src
+        //             name: el.querySelector('a > h2').textContent,
+        //             link: el.querySelector('a').href,
+        //             image_link: el.querySelector('div.card-image-wrapper img').src
         //         }))
         // );
 
-        console.log(data);
+        const names = await page.evaluate(() =>
+
+            Array.from(document.querySelectorAll('a > h2'))
+                .map((el) => ({
+                    name: el.textContent
+                }))
+
+        )
+
+        const links = await page.evaluate(() =>
+
+            Array.from(document.querySelectorAll('div.bn-story-card a'))
+                .map((el) => ({
+                    link: el.href
+                }))
+
+        )
+
+        const image_links = await page.evaluate(() =>
+
+            Array.from(document.querySelectorAll('div.card-image-wrapper img'))
+                .map((el) => ({
+                    image_link: el.src
+                }))
+
+        )
+
+        const news = names.concat(links, image_links);
+
+
+        console.log(news);
+
+        fs.writeFileSync('./news.json', JSON.stringify(news));
 
         // now scrape the images        
 
