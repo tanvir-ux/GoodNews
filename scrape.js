@@ -16,16 +16,15 @@ const fs = require('fs');
                     link: el.querySelector('a').href,
                     source_name: "Prthom Alo",
                     news_language: "Bangla"
-
                 }))
             );
-        console.log(news);
+        console.log("without filter", news);
         
         // now filter bad news 
-        const news_bad_words = ["অবৈধ", "কলেজের"]
+        const news_bad_words = ["অবৈধ", "নির্যাতনের"]
 
         
-        news.forEach(n => {
+       await news.forEach(n => {
             //console.log(n.name.split(' '));
             const names = n.name.split(' ');
            
@@ -37,10 +36,10 @@ const fs = require('fs');
                 }
             }
         })
-        console.log(news);
+        console.log("with filter", news);
 
         // write to json file        
-        //fs.writeFileSync('./news.json', JSON.stringify(news));      
+        fs.writeFileSync('./news.json', JSON.stringify(news));      
         await browser.close();
     } catch (e) {
         console.log('our error', e)
