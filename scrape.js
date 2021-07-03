@@ -18,27 +18,19 @@ const fs = require('fs');
                     news_language: "Bangla"
                 }))
             );
-        console.log("without filter", news);
-        
-        // now filter bad news 
-        const news_bad_words = ["অবৈধ", "নির্যাতনের"]
-
-        
-       await news.forEach(n => {
-            //console.log(n.name.split(' '));
-            const names = n.name.split(' ');
-           
-            for ( const x of names) {
-                for(const y of news_bad_words ) {
-                    if( x === y) {
-                        n.name = -1;
+        console.log("without filter", news);         
+        const news_bad_words = ["অবৈধ", "নির্যাতনের"]        
+        await news.forEach(n => {                
+                const names = n.name.split(' ');            
+                for ( const x of names) {
+                    for(const y of news_bad_words ) {
+                        if( x === y) {
+                            n.name = -1;
+                        }
                     }
                 }
-            }
-        })
-        console.log("with filter", news);
-
-        // write to json file        
+            })
+        console.log("with filter", news);               
         fs.writeFileSync('./news.json', JSON.stringify(news));      
         await browser.close();
     } catch (e) {
