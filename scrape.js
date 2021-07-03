@@ -1,8 +1,12 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
+
+
 (async function main() {
     try {
+
+        
 
         const browser = await puppeteer.launch({
             headless: true
@@ -10,54 +14,75 @@ const fs = require('fs');
         const page = await browser.newPage();
 
         await page.goto('https://www.prothomalo.com/collection/latest');
-        await page.setViewport({
-            width: 1200,
-            height: 800
-        });
+        
 
         await page.waitForSelector('.bn-story-card');
 
-        // const data = await page.evaluate(() =>
+        
 
-        //     Array.from(document.querySelectorAll('.bn-story-card'))
+
+        
+
+        const news = await page.evaluate(() =>
+
+
+            Array.from(document.querySelectorAll('.bn-story-card'))
+                .map((el) => ({
+                    name: el.querySelector('a > h2').textContent,
+                    link: el.querySelector('a').href,
+                    //image_link: el.querySelector('div.card-image-wrapper img').src
+                }))
+
+            );
+
+        // const names = await page.evaluate(() =>
+
+        //     Array.from(document.querySelectorAll('div.customStoryCard9-m__story-data__2qgWb > a > h2'))
         //         .map((el) => ({
-        //             name: el.querySelector('a > h2').textContent,
-        //             link: el.querySelector('a').href,
-        //             image_link: el.querySelector('div.card-image-wrapper img').src
+        //             name: el.textContent
         //         }))
-        // );
 
-        const names = await page.evaluate(() =>
+        // )
 
-            Array.from(document.querySelectorAll('a > h2'))
-                .map((el) => ({
-                    name: el.textContent
-                }))
+        // const links = await page.evaluate(() =>
 
-        )
+        //     Array.from(document.querySelectorAll(' div.customStoryCard9-m__story-data__2qgWb > a'))
+        //         .map((el) => ({
+        //             link: el.href
+        //         }))
 
-        const links = await page.evaluate(() =>
+        // )
 
-            Array.from(document.querySelectorAll('div.bn-story-card a'))
-                .map((el) => ({
-                    link: el.href
-                }))
+        // const image_links = await page.evaluate(() =>
 
-        )
+        //     Array.from(document.querySelectorAll('picture.qt-image img'))
+        //         .map((el) => ({
+        //             image_link: el.src
+        //         }))
 
-        const image_links = await page.evaluate(() =>
+        // )
 
-            Array.from(document.querySelectorAll('div.card-image-wrapper img'))
-                .map((el) => ({
-                    image_link: el.src
-                }))
-
-        )
-
-        const news = names.concat(links, image_links);
+        //const news = names.concat(links, image_links);
 
 
         console.log(news);
+
+        // Your main array 
+        //var arr = [ '8','abc','b','c'];
+
+        // This array contains strings that needs to be removed from main array
+        //var removeStr = [ 'abc' , '8'];
+
+       // const news_bad_words = [উপড়ে,হতাশ]
+
+        // news = news.filter(function(s) {
+        //     return s !== 'উপড়ে';
+        // });
+
+        //console.log(arr);
+
+        // 'arr' Outputs to :
+        //[ 'b', 'c' ]
 
         fs.writeFileSync('./news.json', JSON.stringify(news));
 

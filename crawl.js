@@ -18,7 +18,7 @@ const puppeteer = require('puppeteer');
                 .map((el) => ({
                     name: el.querySelector('a > h2').textContent,
                     link: el.querySelector('a').href,
-                    image_link: el.querySelector('div.card-image-wrapper img').src
+                    //image_link: el.querySelector('div.card-image-wrapper img').src
                 }))
         );
 
