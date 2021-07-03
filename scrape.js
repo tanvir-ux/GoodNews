@@ -13,11 +13,34 @@ const fs = require('fs');
             Array.from(document.querySelectorAll('.bn-story-card'))
                 .map((el) => ({
                     name: el.querySelector('a > h2').textContent,
-                    link: el.querySelector('a').href,                    
+                    link: el.querySelector('a').href,
+                    source_name: "Prthom Alo",
+                    news_language: "Bangla"
+
                 }))
             );
         console.log(news);
-        fs.writeFileSync('./news.json', JSON.stringify(news));      
+        
+        // now filter bad news 
+        const news_bad_words = ["অবৈধ", "কলেজের"]
+
+        
+        news.forEach(n => {
+            //console.log(n.name.split(' '));
+            const names = n.name.split(' ');
+           
+            for ( const x of names) {
+                for(const y of news_bad_words ) {
+                    if( x === y) {
+                        n.name = -1;
+                    }
+                }
+            }
+        })
+        console.log(news);
+
+        // write to json file        
+        //fs.writeFileSync('./news.json', JSON.stringify(news));      
         await browser.close();
     } catch (e) {
         console.log('our error', e)
