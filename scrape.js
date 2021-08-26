@@ -26,7 +26,7 @@ const fs = require('fs');
                 for ( const x of names) {
                     for(const y of news_bad_words ) {
                         if( x === y) {
-                            n.name = -1;
+                            n.name = false;
                         }
                     }
                 }
