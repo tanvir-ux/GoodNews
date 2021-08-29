@@ -1,0 +1,23 @@
+{
+  "name": "GoodNews",
+  "version": "1.0.0",
+  "description": "Good News is an android app for filtering good news from a news site.",
+  "main": "crawl.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanvir-ux/GoodNews.git"
+  },
+  "keywords": [],
+  "author": "Mehvozsoft| Md. Tanvir Alam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tanvir-ux/GoodNews/issues"
+  },
+  "homepage": "https://github.com/tanvir-ux/GoodNews#readme",
+  "dependencies": {
+    "puppeteer": "^10.1.0"
+  }
+}
