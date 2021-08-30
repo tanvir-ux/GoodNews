@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v2      
       - name: cron job
         shell: bash      
-      - run:  npm install        
+        run:  npm install        
       - run:  chmod +x .github/timeout.sh        
       - run:  bash .github/timeout.sh
       - run:  git config user.email "tanviralamshuvo@gmail.com"
