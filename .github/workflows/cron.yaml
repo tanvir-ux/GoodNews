@@ -8,6 +8,6 @@ jobs:
     steps:      
       - name: cron job
         shell: bash
-        run: timeout.sh
+        run: bash timeout.sh
           
           
