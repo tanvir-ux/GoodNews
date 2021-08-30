@@ -5,9 +5,10 @@ on:
 jobs:
   cron:
     runs-on: ubuntu-latest
-    steps:      
-      - name: cron job
+    steps:
+      - uses: actions/checkout@v1      
+      - name: cron job        
+        run: .github/workflows/timeout.sh
         shell: bash
-        run: bash timeout.sh
           
           
