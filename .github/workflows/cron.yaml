@@ -7,8 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1      
-      - name: cron job        
-        run: .github/timeout.sh
+      - name: cron job
         shell: bash
+        run: chdmod +x .github/timeout.sh        
+      - run: .github/timeout.sh
+          
+        
+        
           
           
