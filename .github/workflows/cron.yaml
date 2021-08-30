@@ -6,7 +6,7 @@ on:
       - uses: actions/checkout@v1      
       - name: cron job
         shell: bash
-        run: chmod +x .github/timeout.sh        
+        run: chdmod +x .github/timeout.sh        
       - run: .github/timeout.sh
     
 
