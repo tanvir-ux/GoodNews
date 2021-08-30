@@ -8,11 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2      
       - name: cron job
-        shell: bash
-        run: npm install        
-        run: chmod +x .github/timeout.sh        
-      - run: .github/timeout.sh
+        shell: bash        
       - run: |
+          npm install        
+          chmod +x .github/timeout.sh        
+          bash .github/timeout.sh
           git config user.email "tanviralamshuvo@gmail.com"
           git config user.name "tanvir-ux"          
           git commit -am "Automated crawling"
