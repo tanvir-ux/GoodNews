@@ -1,5 +1,12 @@
-echo "Hello World"
+date
+now=$(date)
 
-sleep 10s
 
-echo "Another World"
+echo "crawling news..."
+node scrape.js
+echo "crawling done..."
+echo "pushing to github..."
+git add news.json
+git commit -m "$now"
+
+
