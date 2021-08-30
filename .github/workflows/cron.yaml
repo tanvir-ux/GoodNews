@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1      
       - name: cron job        
-        run: .github/workflows/timeout.sh
+        run: .github/timeout.sh
         shell: bash
           
           
