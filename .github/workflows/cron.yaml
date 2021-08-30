@@ -5,9 +5,7 @@ on:
 jobs:
   cron:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository code
-        uses: actions/checkout@v2
+    steps:      
       - name: cron job
         shell: bash
         run: timeout.sh
