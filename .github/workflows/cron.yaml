@@ -1,9 +1,6 @@
 name: 15-minute-cron
 on:
   push:
-    - cron: '*/5 * * * *'
-jobs:
-  cron:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1      
@@ -11,6 +8,9 @@ jobs:
         shell: bash
         run: chmod +x .github/timeout.sh        
       - run: .github/timeout.sh
+    
+
+    
           
         
         
