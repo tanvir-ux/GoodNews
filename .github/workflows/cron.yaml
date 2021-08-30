@@ -1,6 +1,6 @@
 name: 15-minute-cron
 on:
-  schedule:
+  push:
     - cron: '*/5 * * * *'
 jobs:
   cron:
