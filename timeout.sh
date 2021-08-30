@@ -4,8 +4,9 @@ now=$(date)
 echo "crawling news..."
 node scrape.js
 echo "crawling done..."
+sleep 1s
 echo "pushing to github..."
-git add news.json
+git add .
 git commit -m "$now"
 git push 
 
